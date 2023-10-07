@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>Code Editor | Crazy code 
+    </title>
+    <script src="https://kit.fontawesome.com/12ef94937e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+padding: 0;
+font-family: 'Times New Roman', Times, serif;
+box-sizing: border-box;
+        }
+        body{
+            background: #454545;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .contaner{
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+        }
+        .left , .right{
+            flex-basis: 50%;
+            padding: 10px;
+        }
+        textarea{
+            width: 100%;
+            height: 28%;
+            background: #1f1f1f;
+            color: #fff;
+            padding: 10px 20px;
+            border: 0;
+            outline: 0;
+            font-size: 18px;
+        }
+        iframe{
+            width: 100%;
+            height: 95%;
+            background: #fff;
+            border: 0;
+            outline: 0;
+        }
+        
+        label i {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        label{
+            display: flex;
+            align-items: center;
+            background: #000;
+            height: 30px;
+            
+        }
+    </style>
+</head>
+<body>
+<div class="contaner">
+    <div class="left">
+        <label> <i class="fa-brands fa-html5 fa-spin" style="color: #3b5178;"></i> HTML</label>
+        <textarea id="htmlcode" onkeyup="run()" ></textarea>
+
+        <label><i class="fa-brands fa-css3-alt fa-spin" style="color: #384d71;"></i> CSS</label>
+        <textarea id="csscode" onkeyup="run()"  ></textarea>
+
+        <label> <i class="fa-brands fa-js fa-spin" style="color: #395689;"></i> Javascript</label>
+        <textarea id="jscode" onkeyup="run()"  ></textarea>
+    </div>
+    <div class="right">
+        <label>
+            <i class="fa-solid fa-play" style="color: #fff;"> Output</i>
+        </label>
+        <iframe id="output"></iframe>
+    </div>
+</div>
+<script>
+    function run(){
+        var htmlCode = document.getElementById("htmlcode").value;
+        var CSS = document.getElementById("csscode").value;
+        var Jaslcode = document.getElementById("jscode").value;
+        var  output = document.getElementById("output");
+
+
+        output.contentDocument.body.innerHTML = htmlCode + "<style>" + CSS + "</style>" ;
+        output.contentWindow.eval(Jaslcode);
+    }
+   
+</script>
+</body>
+</html>
